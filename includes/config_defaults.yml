@@ -99,17 +99,18 @@ audit_pdf:
 pdf_front_matter:
   copyright: 'Created with VirtuousLoop'
 
-aylien:
-  api_key: 'f68794f5973dcc7201e3bbf2d65f0928'
-  api_id: 'da338871'
-  endpoints: ["sentiment", "entities", "hashtags", "summarize"]
-  endpoint_name: ["polarity", "entities", "hashtags", "sentences"]
-  endpoint_title: ["Sentiment", "Keywords", "Hashtags", "Sentences"]
+# remove aylien
+# aylien:
+#  api_key: 'f68794f5973dcc7201e3bbf2d65f0928'
+#  api_id: 'da338871'
+#  endpoints: ["sentiment", "entities", "hashtags", "summarize"]
+#  endpoint_name: ["polarity", "entities", "hashtags", "sentences"]
+#  endpoint_title: ["Sentiment", "Keywords", "Hashtags", "Sentences"]
 
 # variables for the analysis
 analytics:
   readability_stats: [['wc', 'sentence info', 'words'],['sc', 'sentence info', 'sentences'],['flesch', 'readability grades', 'FleschReadingEase']]
-  nlp_source_comment: "Extracted using the Aylien NLP API"
+  nlp_source_comment: "NLP not available"
   filename: "marker_analytics" # the output name for the file
   analytics_header: "Analytics for all markers"
   grade_chart_header: "Average grades by marker"
@@ -119,7 +120,7 @@ analytics:
   rubric_header: "Distribution by criterion"
   rubric_comment: "Graph of rubric distribution"
   readability_header: " Readability Statistics on comments"
-  readability_comment: "for all comments, extracted using the Aylien NLP API"
+  readability_comment: "NLP not available"
   sentiment_header: "Sentiment Analysis of comments"
   summary_header: "Data extracted on comments"
 

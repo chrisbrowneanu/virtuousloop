@@ -262,12 +262,13 @@ audit_pdf:
 pdf_front_matter:
   copyright: 'Created with VirtuousLoop'
 
-aylien:
-  api_key: 'f68794f5973dcc7201e3bbf2d65f0928'
-  api_id: 'da338871'
-  endpoints: ["sentiment", "entities", "hashtags", "summarize"]
-  endpoint_name: ["polarity", "entities", "hashtags", "sentences"]
-  endpoint_title: ["Sentiment", "Keywords", "Hashtags", "Sentences"]
+# remove aylien
+#aylien:
+#  api_key: 'f68794f5973dcc7201e3bbf2d65f0928'
+#  api_id: 'da338871'
+#  endpoints: ["sentiment", "entities", "hashtags", "summarize"]
+#  endpoint_name: ["polarity", "entities", "hashtags", "sentences"]
+#  endpoint_title: ["Sentiment", "Keywords", "Hashtags", "Sentences"]
 
 # variables for the analysis
 analytics:

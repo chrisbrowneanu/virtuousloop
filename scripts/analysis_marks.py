@@ -162,36 +162,38 @@ def analysis_marks():
 
         # using enumerate to access list indices for name and title
         # work through the defined nlp endpoints
-        for num, endpoint in enumerate(cfg['aylien']['endpoints'], start=0):
-            name = (cfg['aylien']['endpoint_name'][num])
-            title = (cfg['aylien']['endpoint_title'][num])
-            
-            # treat sentiment differently, as it is better presented in a table
-            if endpoint != 'sentiment':
-                with open(c.d['md'] + this_marker_name + '.md', 'a') as out:
-                    print("\n### Comment " + title + "\n\n", file=out)
-                    print("\n*" + cfg['analytics']['nlp_source_comment']+  "*\n", file=out)
+        try:
+            for num, endpoint in enumerate(cfg['aylien']['endpoints'], start=0):
+                name = (cfg['aylien']['endpoint_name'][num])
+                title = (cfg['aylien']['endpoint_title'][num])
 
-                    # loop through the analysis for each comment
-                    for i, row in comm.iterrows():
-                        comment = row['field']
-                        field_text = row['label']
+                # treat sentiment differently, as it is better presented in a table
+                if endpoint != 'sentiment':
+                    with open(c.d['md'] + this_marker_name + '.md', 'a') as out:
+                        print("\n### Comment " + title + "\n\n", file=out)
+                        print("\n*" + cfg['analytics']['nlp_source_comment']+  "*\n", file=out)
 
+                        # loop through the analysis for each comment
+                        for i, row in comm.iterrows():
+                            comment = row['field']
+                            field_text = row['label']
 
-                        # load the nlp json response to read from
-                        with open(c.d['nlp'] + this_marker_name + "_" + comment + ".json") as json_file:
-                            this_nlp = json.load(json_file)
+                            # load the nlp json response to read from
+                            with open(c.d['nlp'] + this_marker_name + "_" + comment + ".json") as json_file:
+                                this_nlp = json.load(json_file)
 
-                            # print a header to out
-                            print("\n**" + title + " for " + field_text + "**" "\n\n", file=out)
-                            try: 
-                                item_out = ""
-                                for item in this_nlp[name]:
-                                    item_out = item.replace("#", "\\#")
-                                    print("* " + item_out, file=out)
-                            except:
-                                print("* N/A", file=out)
-    
+                                # print a header to out
+                                print("\n**" + title + " for " + field_text + "**" "\n\n", file=out)
+                                try:
+                                    item_out = ""
+                                    for item in this_nlp[name]:
+                                        item_out = item.replace("#", "\\#")
+                                        print("* " + item_out, file=out)
+                                except:
+                                    print("* N/A", file=out)
+        except:
+            print("* N/A", file=out)
+
     # create a stat_chart for the marker means
     f.make_stat_chart(marker, 'marker_name', 'grade_mean', 'grade_mean')
 
