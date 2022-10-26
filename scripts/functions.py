@@ -826,46 +826,46 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-def text_analysis_api(text, label, record):
-    '''
-    function to call nlp api
-    '''
-    try:
-        cfg = load_config()
-        aylien = textapi.Client(cfg['aylien']['api_id'], cfg['aylien']['api_key'])
-        combined = aylien.Combined({
-            'text': text,
-            'endpoint': cfg['aylien']['endpoints']
-        })
-
-        this_dict = dict()
-        for result in combined["results"]:
-            this_endpoint = result["endpoint"]
-            this_result = result["result"]
-            if this_endpoint == "entities":
-                try:
-                    this_dict['entities'] = this_result["entities"]["keyword"]
-                except Exception:
-                    this_dict['entities'] = ["None detected"]
-            if this_endpoint == "sentiment":
-                try:
-                    this_dict['polarity'] = this_result["polarity"]
-                except Exception:
-                    this_dict['polarity'] = ["None detected"]
-            if this_endpoint == "hashtags":
-                try:
-                    this_dict['hashtags'] = this_result["hashtags"]
-                except Exception:
-                    this_dict['polarity'] = ["None detected"]
-            if this_endpoint == "summarize":
-                try:
-                    this_dict['sentences'] = this_result["sentences"]
-                except Exception:
-                    this_dict['sentences'] = ["None detected"]
-        this_dict_dump = json.dumps(this_dict)
-        return this_dict_dump
-    except:
-        return ["NA"]
+# def text_analysis_api(text, label, record):
+#     '''
+#     function to call nlp api
+#     '''
+#     try:
+#         cfg = load_config()
+#         aylien = textapi.Client(cfg['aylien']['api_id'], cfg['aylien']['api_key'])
+#         combined = aylien.Combined({
+#             'text': text,
+#             'endpoint': cfg['aylien']['endpoints']
+#         })
+#
+#         this_dict = dict()
+#         for result in combined["results"]:
+#             this_endpoint = result["endpoint"]
+#             this_result = result["result"]
+#             if this_endpoint == "entities":
+#                 try:
+#                     this_dict['entities'] = this_result["entities"]["keyword"]
+#                 except Exception:
+#                     this_dict['entities'] = ["None detected"]
+#             if this_endpoint == "sentiment":
+#                 try:
+#                     this_dict['polarity'] = this_result["polarity"]
+#                 except Exception:
+#                     this_dict['polarity'] = ["None detected"]
+#             if this_endpoint == "hashtags":
+#                 try:
+#                     this_dict['hashtags'] = this_result["hashtags"]
+#                 except Exception:
+#                     this_dict['polarity'] = ["None detected"]
+#             if this_endpoint == "summarize":
+#                 try:
+#                     this_dict['sentences'] = this_result["sentences"]
+#                 except Exception:
+#                     this_dict['sentences'] = ["None detected"]
+#         this_dict_dump = json.dumps(this_dict)
+#         return this_dict_dump
+#     except:
+#         return ["NA"]
 
 
 def sentiment_table(columns, rows):

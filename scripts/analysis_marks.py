@@ -136,14 +136,14 @@ def analysis_marks():
             with open(c.d['txt'] + this_marker_name + "_" + comment + ".txt", 'w') as out:
                 print(this_comment, file=out)
 
-            this_nlp_file = Path(c.d['nlp'] + this_marker_name + "_" + comment + ".json")
             # check if the nlp data already exists
+            # this_nlp_file = Path(c.d['nlp'] + this_marker_name + "_" + comment + ".json")
             # this is important only to reduce the numbers of calls on the api for local testing
-            if not this_nlp_file.is_file():
-                # get the results from the api
-                this_nlp = f.text_analysis_api(this_comment, 'comment', row['marker_name'])
-                with open(this_nlp_file, 'w') as out:
-                    print(this_nlp, file=out)
+            # if not this_nlp_file.is_file():
+            #     # get the results from the api
+            #     this_nlp = f.text_analysis_api(this_comment, 'comment', row['marker_name'])
+            #     with open(this_nlp_file, 'w') as out:
+            #         print(this_nlp, file=out)
 
             # create a wordcloud using the wordcloud_cli interface
             subprocess.call("wordcloud_cli --width 1000 --height 250 --text " + c.d['txt'] + this_marker_name + "_" + comment + ".txt --imagefile " + c.d['wordcloud'] + this_marker_name + "_" + comment + ".png --fontfile ./includes/fonts/Roboto-Medium.ttf --background white --color blue", shell=True)
