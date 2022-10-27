@@ -272,11 +272,11 @@ def analysis_marks():
             print("*" + cfg['crit_chart'][readability_list[0]] + cfg['analytics']['readability_comment'] + "*\n\n", file=out)
             print("</div>\n\n", file=out)
 
-        print("\n\n## " + cfg['analytics']['sentiment_header'] + "\n\n", file=out)
-
-        sentiment_df = f.sentiment_table(comm, marker)
-        sentiment_df.set_index('Name', inplace=True)
-        print(sentiment_df.to_html(), file=out)
+        # print("\n\n## " + cfg['analytics']['sentiment_header'] + "\n\n", file=out)
+        #
+        # sentiment_df = f.sentiment_table(comm, marker)
+        # sentiment_df.set_index('Name', inplace=True)
+        # print(sentiment_df.to_html(), file=out)
 
         print("# " + cfg['analytics']['summary_header']+ "\n\n", file=out)
 
