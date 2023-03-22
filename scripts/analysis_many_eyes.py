@@ -663,8 +663,8 @@ def analysis_many_eyes():
 
     for i, row in students.iterrows():
         this_user = row['user']
-        secret_file = this_user + "-" + self_team + ".pdf"
-        comment = "/reviews/" + this_user + "-" + self_team + ".pdf"
+        secret_file = this_user + "_" + self_team + ".pdf"
+        comment = "/reviews/" + this_user + "_" + self_team + ".pdf"
         
         # update the df
         students.loc[i,'secret'] = comment
