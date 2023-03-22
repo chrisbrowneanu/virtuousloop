@@ -565,52 +565,52 @@ def analysis_many_eyes():
 
                     # using enumerate to access list indices for name and title
                     # work through the defined nlp endpoints
-                    for num, endpoint in enumerate(cfg['aylien']['endpoints'], start=0):
-                        name=(cfg['aylien']['endpoint_name'][num])
-                        title=(cfg['aylien']['endpoint_title'][num])
-                        
-                        print("<article id=\"columns\">", file=out)
-                        print("\n## Comment " + title + "\n\n", file=out)
-                        if endpoint == "sentiment":
-                            print("<section>", file=out)
-
-                        # loop through the analysis for each comment
-                        for role in role_list:
-
-                            # load the nlp json response to read from
-                            with open(c.d['nlp'] + this_user + "_comment_" + role + ".json") as json_file:
-                                this_nlp = json.load(json_file)
-
-                                # print a header to out
-                                print("\n**" + title + " for " + role + " comments**" "\n\n", file=out)
-                                if endpoint == "sentiment":
-                                    item_out = ""
-                                    for item in this_nlp[name]:
-                                        item_out += item
-                                    print("* " + item_out, file=out)
-                                else:
-                                    try: 
-                                        item_check=[]
-                                        item_out = ""
-                                        for item in this_nlp[name]:
-                                            # replace hashes so that they are not interpreted in markdown
-                                            if endpoint != 'entities':
-                                                item_out = item.replace("#", "\\#")
-                                                print("* " + item_out, file=out)
-                                            else:
-                                                this_item=item.split(' ')
-                                                item_out = this_item[0].replace("#", "\\#")
-                                                if item_out not in item_check :
-                                                    # print to out each item in a list
-                                                    print("* " + item_out, file=out)
-                                                    item_check.append(item_out)
-                                    except:
-                                        # if there's nothing there, print N/A
-                                        print("* N/A", file=out)
-                        
-                        if endpoint == "sentiment":
-                            print("</section>", file=out)
-                        print("</article>", file=out)
+                    # for num, endpoint in enumerate(cfg['aylien']['endpoints'], start=0):
+                    #     name=(cfg['aylien']['endpoint_name'][num])
+                    #     title=(cfg['aylien']['endpoint_title'][num])
+                    #
+                    #     print("<article id=\"columns\">", file=out)
+                    #     print("\n## Comment " + title + "\n\n", file=out)
+                    #     if endpoint == "sentiment":
+                    #         print("<section>", file=out)
+                    #
+                    #     # loop through the analysis for each comment
+                    #     for role in role_list:
+                    #
+                    #         # load the nlp json response to read from
+                    #         with open(c.d['nlp'] + this_user + "_comment_" + role + ".json") as json_file:
+                    #             this_nlp = json.load(json_file)
+                    #
+                    #             # print a header to out
+                    #             print("\n**" + title + " for " + role + " comments**" "\n\n", file=out)
+                    #             if endpoint == "sentiment":
+                    #                 item_out = ""
+                    #                 for item in this_nlp[name]:
+                    #                     item_out += item
+                    #                 print("* " + item_out, file=out)
+                    #             else:
+                    #                 try:
+                    #                     item_check=[]
+                    #                     item_out = ""
+                    #                     for item in this_nlp[name]:
+                    #                         # replace hashes so that they are not interpreted in markdown
+                    #                         if endpoint != 'entities':
+                    #                             item_out = item.replace("#", "\\#")
+                    #                             print("* " + item_out, file=out)
+                    #                         else:
+                    #                             this_item=item.split(' ')
+                    #                             item_out = this_item[0].replace("#", "\\#")
+                    #                             if item_out not in item_check :
+                    #                                 # print to out each item in a list
+                    #                                 print("* " + item_out, file=out)
+                    #                                 item_check.append(item_out)
+                    #                 except:
+                    #                     # if there's nothing there, print N/A
+                    #                     print("* N/A", file=out)
+                    #
+                    #     if endpoint == "sentiment":
+                    #         print("</section>", file=out)
+                    #     print("</article>", file=out)
                     print("\n\n# Wordclouds generated from your comments\n", file=out)
 
                     print("Wordclouds provide a simple visual representation of the frequency of words used in your feedback - words that appear larger were used more frequently. Wordclouds provide an indication of frequency; however are limited in providing context as to how the words are correlated or used in combination.\n\n",file=out)
@@ -733,14 +733,14 @@ def local_text_analysis(dataframe, user, role):
 
         subprocess.call("wordcloud_cli --width 1000 --height 250 --text " + c.d['txt'] + user + "_" + role + ".txt --imagefile " + c.d['wordcloud'] + user + "_" + role + ".png --fontfile ./includes/fonts/Roboto-Medium.ttf --background white --color " + this_color, shell=True)
 
-        this_nlp_file = Path(c.d['nlp'] + user + "_comment_" + role + ".json")
-        # check if the nlp data already exists
-        # this is important only to reduce the numbers of calls on the api for local testing
-        if not this_nlp_file.is_file():
-            # get the results from the api
-            this_nlp=f.text_analysis_api(this_comment, "comment_" + role, user)
-            with open(this_nlp_file, 'w') as out:
-                print(this_nlp, file=out)
+        # this_nlp_file = Path(c.d['nlp'] + user + "_comment_" + role + ".json")
+        # # check if the nlp data already exists
+        # # this is important only to reduce the numbers of calls on the api for local testing
+        # if not this_nlp_file.is_file():
+        #     # get the results from the api
+        #     this_nlp=f.text_analysis_api(this_comment, "comment_" + role, user)
+        #     with open(this_nlp_file, 'w') as out:
+        #         print(this_nlp, file=out)
 
 def score_dataframe(dataframe, curr_col, score_col, score_list, score_vals):
     for i, i_row in dataframe.iterrows():
