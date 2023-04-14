@@ -732,7 +732,7 @@ def make_tmc_chart(dataframe, out):
     ax.spines['top'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     leg = plt.legend( loc = 'lower center', ncol=8)
-    bb = leg
+    bb = leg.get_bbox_to_anchor()
     # bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
     yOffset = 0.5
     bb.y0 -= yOffset
