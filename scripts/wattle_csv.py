@@ -36,17 +36,18 @@ def wattle_csv():
         for i, row in c.df['students'].iterrows():
             user = row['user']
             group = row['group']
-            secret = hashlib.sha1(row['user'].encode('utf-8')).hexdigest()
-            secret_file = user + "-" + secret + ".pdf"
+            # secret = hashlib.sha1(row['user'].encode('utf-8')).hexdigest()
+            # secret_file = user + "-" + secret + ".pdf"
+            this_file = user + ".pdf"
 
             # cp pdf to secret here
             file_from = c.d['pdf'] + group + "_tmc_anon.pdf"
-            file_to = c.d['upload'] + secret_file
+            file_to = c.d['upload'] + this_file
 
             if path.exists(file_from):
                 copyfile(file_from, file_to)
                 comment = "<a href=\"" + cfg['assignment'][
-                    'feedback_url'] + "/" + user + "-" + secret + ".pdf\">PDF Feedback</a>"
+                    'feedback_url'] + "/" + user + ".pdf\">PDF Feedback</a>"
             else:
                 comment = "No Team Member Contribution received from the team"
 
@@ -62,8 +63,8 @@ def wattle_csv():
         # loop through each row and create a secret for each student
         for i, row in c.df['marks'].iterrows():
             user = row['user']
-            secret = hashlib.sha1(row['user'].encode('utf-8')).hexdigest()
-            secret_file = user + "-" + secret + ".pdf"
+            # secret = hashlib.sha1(row['user'].encode('utf-8')).hexdigest()
+            this_file = user + ".pdf"
             comment = "<a href=\"" + cfg['assignment'][
                 'feedback_url'] + "/" + user + "-" + secret + ".pdf\">PDF Feedback</a>"
 
@@ -73,7 +74,7 @@ def wattle_csv():
 
             # cp pdf to secret here
             file_from = c.d['pdf'] + user + ".pdf"
-            file_to = c.d['upload'] + secret_file
+            file_to = c.d['upload'] + this_file
 
             copyfile(file_from, file_to)
         marks_out = c.df['marks'][['user', 'grade_final', 'secret']]
