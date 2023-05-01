@@ -64,6 +64,7 @@ def wattle_csv():
         for i, row in c.df['marks'].iterrows():
             user = row['user']
             # secret = hashlib.sha1(row['user'].encode('utf-8')).hexdigest()
+            secret =""
             this_file = user + ".pdf"
             comment = "<a href=\"" + cfg['assignment'][
                 'feedback_url'] + "/" + user + "-" + secret + ".pdf\">PDF Feedback</a>"
