@@ -67,7 +67,7 @@ def wattle_csv():
             secret =""
             this_file = user + ".pdf"
             comment = "<a href=\"" + cfg['assignment'][
-                'feedback_url'] + "/" + user + "-" + secret + ".pdf\">PDF Feedback</a>"
+                'feedback_url'] + "/" + user + ".pdf\">PDF Feedback</a>"
 
             # update the df
             c.df['marks'].at[i, 'secret'] = comment
