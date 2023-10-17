@@ -90,11 +90,9 @@ def load_csv(file):
         pnt_ok ("Loaded " + c.f[file] + "...OK")
         # if the file has na as an index..
         if file == "crit_levels":
-            # c.df[file] = pd.read_csv(c.f[file], na_filter=False)
-            c.df[file] = pd.read_csv(c.f[file])
+            c.df[file] = pd.read_csv(c.f[file], encoding= "utf-8", na_filter=False)
         elif file == "marks":
-           # c.df[file] = pd.read_csv(c.f[file], na_filter=False)
-            c.df[file] = pd.read_csv(c.f[file])
+           c.df[file] = pd.read_csv(c.f[file], encoding= "utf-8", na_filter=False)
         else:
             c.df[file] = pd.read_csv(c.f[file])
         # lowercase all headers for simplification
