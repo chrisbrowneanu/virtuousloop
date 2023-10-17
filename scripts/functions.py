@@ -94,7 +94,7 @@ def load_csv(file):
         elif file == "marks":
            c.df[file] = pd.read_csv(c.f[file], encoding= "utf-8", na_filter=False)
         else:
-            c.df[file] = pd.read_csv(c.f[file])
+            c.df[file] = pd.read_csv(c.f[file], encoding= "utf-8")
         # lowercase all headers for simplification
         c.df[file].columns = map(str.lower, c.df[file].columns)
 
