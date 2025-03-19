@@ -409,7 +409,7 @@ def analysis_many_eyes():
 
                     print("# Descriptive statistics about your comments\n\n", file=out)
                     print("## Word Count\n\n", file=out)
-                    print("The course guide requests you to complete 250-500 words per review.\n\n", file=out)
+                    print("The assessment guide requests you to complete 200-250 words per review.\n\n", file=out)
                     print("These data are provided for information to help benchmark the quantity of feedback you are providing in the reviews."
                           " Note that 'more' is not necessarily better, but 'enough' is needed to provide value in the Many Eyes process."
                           " Locate on the histograms where your feedback is situated: if it falls on the lower end, then consider providing more feedback in the next audit; if it falls on the upper end, then you have likely been helpful in the audit.\n\n", file=out)
