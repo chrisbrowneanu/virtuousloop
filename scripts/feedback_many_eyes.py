@@ -290,7 +290,7 @@ def format_audit_feedback(team, kind):
                     print("**Tutor**\n\n" + this_text + "\n\n", file=out)
                 for k, c_row in this_team_client_df.iterrows():
                     this_text = str(c_row[this_field])
-                    print("**Client**\n\n" + this_text + "\n\n", file=out)
+                    print("**Project Host**\n\n" + this_text + "\n\n", file=out)
 
         # print the confidential comments
         if kind == 'conf':
