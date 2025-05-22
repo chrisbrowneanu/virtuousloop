@@ -691,7 +691,8 @@ def analysis_many_eyes():
         this_crit_score=self_crit_score + shadow_crit_score
         students.loc[i,'text_score'] = this_text_score
         students.loc[i,'crit_score'] = this_crit_score
-        students.loc[i,'self_wc'] = self_wc_score
+        students.loc[i,'self_wc'] = this_self_df['wc']
+        students.loc[i,'shadow_wc'] = this_shadow_df['wc']
 
     
     students['text_rank']=students.text_score.rank(pct=True)
@@ -708,7 +709,7 @@ def analysis_many_eyes():
 
 
     # this_out=students[['user','secret','text_score', 'crit_score', 'score_rank']]
-    this_out=students[['user','firstname','lastname','group','text_score','self_wc', 'crit_score', 'score_rank']]
+    this_out=students[['user','firstname','lastname','group','text_score','self_wc','shadow_wc','crit_score', 'score_rank']]
     this_out.to_csv(c.f['wattle_analysis'], index=False)
 
 
