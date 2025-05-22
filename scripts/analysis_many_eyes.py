@@ -709,7 +709,7 @@ def analysis_many_eyes():
 
 
     # this_out=students[['user','secret','text_score', 'crit_score', 'score_rank']]
-    this_out=students[['user','firstname','lastname','group','self_wc,'shadow_wc','text_score','crit_score', 'score_rank']]
+    this_out=students[['user','firstname','lastname','group','self_wc','shadow_wc','text_score','crit_score', 'score_rank']]
     this_out.to_csv(c.f['wattle_analysis'], index=False)
 
 
