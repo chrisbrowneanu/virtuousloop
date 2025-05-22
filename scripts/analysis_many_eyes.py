@@ -706,7 +706,8 @@ def analysis_many_eyes():
     students['score_rank']=students.combined_rank.rank(pct=True)
 
 
-    this_out=students[['user','secret','text_score', 'crit_score', 'score_rank']]
+    # this_out=students[['user','secret','text_score', 'crit_score', 'score_rank']]
+    this_out=students[['user','this_first','this_last','self_team','text_score', 'crit_score', 'score_rank']]
     this_out.to_csv(c.f['wattle_analysis'], index=False)
 
 
