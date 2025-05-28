@@ -53,7 +53,7 @@ def wattle_csv():
 
             # update the df
             c.df['students'].at[i, 'secret'] = comment
-        wattle_out = c.df['students'][['user', 'secret']]
+        wattle_out = c.df['students'][['user','group','secret']]
 
     # decide whether to use the list_team or list_name field
     elif not cfg['feedback_type']['group']:
