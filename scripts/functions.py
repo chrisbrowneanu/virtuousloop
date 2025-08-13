@@ -596,7 +596,7 @@ def make_count_chart(dataframe, name):
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     leg = plt.legend( loc = 'lower center', ncol=8)
-    bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
+    bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.4
     bb.y0 -= yOffset
     bb.y1 -= yOffset
@@ -620,7 +620,7 @@ def make_stacked_chart(dataframe, name, boolean):
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     leg = plt.legend( loc = 'lower center', ncol=8)
-    bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
+    bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.4
     bb.y0 -= yOffset
     bb.y1 -= yOffset
@@ -706,7 +706,7 @@ def make_stat_chart(dataframe, group_axis, count_axis, title):
     ax.set_xlabel(this_title.replace("_", " ").capitalize(), labelpad=20, size=8, weight='bold')
     ax.set_ylabel(group_axis.replace("_", " ").capitalize(), labelpad=20, size=8, weight='bold')
     leg = plt.legend( loc = 'lower center', ncol=8)
-    bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
+    bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.5
     bb.y0 -= yOffset
     bb.y1 -= yOffset
@@ -732,7 +732,6 @@ def make_tmc_chart(dataframe, out):
     ax.spines['top'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     leg = plt.legend( loc = 'lower center', ncol=8)
-    # bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
     bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.5
     bb.y0 -= yOffset
@@ -757,7 +756,7 @@ def make_audit_chart(dataframe, out):
     ax.spines['top'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     leg = plt.legend(loc='lower center', ncol=8)
-    bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
+    bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.5
     bb.y0 -= yOffset
     bb.y1 -= yOffset
@@ -781,7 +780,7 @@ def make_audit_crit_chart(dataframe, out):
     ax.spines['top'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     leg = plt.legend(loc='lower center', ncol=8)
-    bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
+    bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.5
     bb.y0 -= yOffset
     bb.y1 -= yOffset
@@ -804,7 +803,7 @@ def make_feedback_chart(dataframe, out):
     ax.spines['top'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     leg = plt.legend(loc='lower center', ncol=8)
-    bb = leg.get_bbox_to_anchor().inverse_transformed(ax.transAxes)
+    bb = leg.get_bbox_to_anchor().transformed(ax.transAxes.inverted())
     yOffset = 0.5
     bb.y0 -= yOffset
     bb.y1 -= yOffset
